@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { GLOBAL } from "../../services/GLOBAL";
 
 @Component({
   selector: 'app-messenger',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessengerComponent implements OnInit {
 
-  constructor() { }
+  public usuarios;
+  public url;
 
-  ngOnInit(): void {
+  constructor(
+      private _userService : UserService,
+
+  ) {
+    this.url  = GLOBAL.url;
+   }
+
+  ngOnInit() {
+    this._userService.get_users().subscribe(
+      response=>{
+        this.usuarios = response.users; 
+        
+        //console.log(response);
+      },
+      error =>{
+
+      }
+    );
+
+
   }
 
 }

@@ -12,17 +12,20 @@
                         <p class="text-center mb-6">Bienvenidos a nuestra red social.</p>
 
                         <!-- Form -->
-                        <form class="mb-6">
+                        <form class="mb-6"  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
                             <!-- Email -->
                             <div class="form-group">
                                 <label for="email" class="sr-only">Correo Electrónico</label>
-                                <input type="email" class="form-control form-control-lg" id="email" placeholder="Correo Electrónico">
+                                <input type="email" class="form-control form-control-lg" id="email" placeholder="Correo Electrónico" 
+                                #email = "ngModel" name="email" [(ngModel)]="user.email" required>
+                                
                             </div>
 
                             <!-- Password -->
                             <div class="form-group">
                                 <label for="password" class="sr-only">Contraseña</label>
-                                <input type="password" class="form-control form-control-lg" id="password" placeholder="Ingrese su contraseña">
+                                <input type="password" class="form-control form-control-lg" id="password" placeholder="Ingrese su contraseña"
+                                #password= "ngModel" name="password" [(ngModel)]="user.password" required>
                             </div>
 
                             <div class="form-group d-flex justify-content-between">
